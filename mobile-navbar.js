@@ -2,24 +2,25 @@ class MobileNavbar {
   constructor(mobileMenu, navList, navLinks) {
     this.mobileMenu = document.querySelector(mobileMenu)
     this.navList = document.querySelector(navList)
-    this.navLinks = document.querySelector(navLinks)
+    this.navLinks = document.querySelectorAll(navLinks)
     this.activeClass = 'active'
 
     this.handleClick = this.handleClick.bind()
   }
 
-  animatedLinks(){
-    this.navLinks.forEach((link, index) ==> {
+  animatedLinks() {
+    this.navLinks.forEach((link, index) => {
       link.style.animation
-      ? (link.style.animation = "")
-      : (link.style.animation = 'navLinkFade 0.5s ease forwards 0.3 & {index / 7 + 0.3}s');
-    });
+        ? (link.style.animation = '')
+        : (link.style.animation =
+            'navLinkFade 0.5s ease forwards 0.3 & {index / 7 + 0.3}s')
+    })
   }
 
   handleClick() {
     this.navList.classList.toggle(this.activeClass)
     this.mobileMenu.classList.toggle(this.activeClass)
-    this.animateLinks();
+    this.animateLinks()
   }
 
   addClickEvent() {
@@ -39,3 +40,4 @@ const mobileNavbar = new MobileNavbar(
   '.nav-list',
   '.nav-list li'
 )
+mobileNavbar.init()
